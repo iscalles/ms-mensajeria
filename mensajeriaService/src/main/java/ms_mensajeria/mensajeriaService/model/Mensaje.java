@@ -2,6 +2,7 @@ package ms_mensajeria.mensajeriaService.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import ms_mensajeria.mensajeriaService.converter.CifradoConverter;
 
 import java.time.LocalDateTime;
 
@@ -22,6 +23,7 @@ public class Mensaje {
     private String asuntoMensaje;
 
     @Lob
+    @Convert(converter = CifradoConverter.class)
     @Column(name = "CUERPO_MENSAJE", nullable = false)
     private String cuerpoMensaje;
 
