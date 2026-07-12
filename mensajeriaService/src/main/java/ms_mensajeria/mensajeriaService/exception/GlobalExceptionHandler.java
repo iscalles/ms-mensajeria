@@ -13,6 +13,15 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    // El usuario autenticado (X-User-Id) intenta acceder a datos que no le pertenecen
+    @ExceptionHandler(AccesoDenegadoException.class)
+    public ResponseEntity<Map<String, Object>> handleAccesoDenegado(AccesoDenegadoException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("message", ex.getMessage());
+        body.put("status", 403);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(body);
+    }
+
     // Errores de negocio lanzados desde los servicios (no encontrado, datos inválidos, etc.)
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<Map<String, Object>> handleRuntimeException(RuntimeException ex) {

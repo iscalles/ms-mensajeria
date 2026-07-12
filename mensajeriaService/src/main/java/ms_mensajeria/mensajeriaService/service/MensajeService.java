@@ -7,15 +7,15 @@ import java.util.List;
 
 public interface MensajeService {
 
-    Mensaje enviarMensaje(MensajeDTO dto);
+    Mensaje enviarMensaje(Long idUsuarioActual, MensajeDTO dto);
 
-    List<Mensaje> listarConversacion(Long idUsuario1, Long idUsuario2);
+    List<Mensaje> listarConversacion(Long idUsuarioActual, Long idUsuario1, Long idUsuario2);
 
-    List<Mensaje> listarBandejaEntrada(Long idUsuarioReceptor);
+    List<Mensaje> listarBandejaEntrada(Long idUsuarioActual, Long idUsuarioReceptor);
 
-    List<Mensaje> listarEnviados(Long idUsuarioEmisor);
+    List<Mensaje> listarEnviados(Long idUsuarioActual, Long idUsuarioEmisor);
 
-    Mensaje marcarLeido(Long idMensaje);
+    Mensaje marcarLeido(Long idUsuarioActual, Long idMensaje);
 
-    long contarNoLeidos(Long idUsuarioReceptor);
+    long contarNoLeidos(Long idUsuarioActual, Long idUsuarioReceptor);
 }

@@ -20,32 +20,38 @@ public class MensajeController {
     }
 
     @PostMapping
-    public ResponseEntity<Mensaje> enviarMensaje(@RequestBody MensajeDTO dto) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.enviarMensaje(dto));
+    public ResponseEntity<Mensaje> enviarMensaje(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                                  @RequestBody MensajeDTO dto) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.enviarMensaje(idUsuarioActual, dto));
     }
 
     @GetMapping("/conversacion")
-    public List<Mensaje> listarConversacion(@RequestParam Long usuario1, @RequestParam Long usuario2) {
-        return service.listarConversacion(usuario1, usuario2);
+    public List<Mensaje> listarConversacion(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                             @RequestParam Long usuario1, @RequestParam Long usuario2) {
+        return service.listarConversacion(idUsuarioActual, usuario1, usuario2);
     }
 
     @GetMapping("/bandeja/{idUsuario}")
-    public List<Mensaje> listarBandejaEntrada(@PathVariable Long idUsuario) {
-        return service.listarBandejaEntrada(idUsuario);
+    public List<Mensaje> listarBandejaEntrada(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                               @PathVariable Long idUsuario) {
+        return service.listarBandejaEntrada(idUsuarioActual, idUsuario);
     }
 
     @GetMapping("/enviados/{idUsuario}")
-    public List<Mensaje> listarEnviados(@PathVariable Long idUsuario) {
-        return service.listarEnviados(idUsuario);
+    public List<Mensaje> listarEnviados(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                         @PathVariable Long idUsuario) {
+        return service.listarEnviados(idUsuarioActual, idUsuario);
     }
 
     @GetMapping("/bandeja/{idUsuario}/no-leidos/count")
-    public long contarNoLeidos(@PathVariable Long idUsuario) {
-        return service.contarNoLeidos(idUsuario);
+    public long contarNoLeidos(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                @PathVariable Long idUsuario) {
+        return service.contarNoLeidos(idUsuarioActual, idUsuario);
     }
 
     @PutMapping("/{id}/marcar-leido")
-    public Mensaje marcarLeido(@PathVariable Long id) {
-        return service.marcarLeido(id);
+    public Mensaje marcarLeido(@RequestHeader("X-User-Id") Long idUsuarioActual,
+                                @PathVariable Long id) {
+        return service.marcarLeido(idUsuarioActual, id);
     }
 }
