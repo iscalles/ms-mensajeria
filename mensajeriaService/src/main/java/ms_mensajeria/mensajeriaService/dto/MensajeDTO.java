@@ -4,7 +4,6 @@ public class MensajeDTO {
 
     private String asuntoMensaje;
     private String cuerpoMensaje;
-    private Long idUsuarioEmisor;
     private Long idUsuarioReceptor;
 
     public MensajeDTO() {
@@ -24,14 +23,6 @@ public class MensajeDTO {
 
     public void setCuerpoMensaje(String cuerpoMensaje) {
         this.cuerpoMensaje = cuerpoMensaje;
-    }
-
-    public Long getIdUsuarioEmisor() {
-        return idUsuarioEmisor;
-    }
-
-    public void setIdUsuarioEmisor(Long idUsuarioEmisor) {
-        this.idUsuarioEmisor = idUsuarioEmisor;
     }
 
     public Long getIdUsuarioReceptor() {
