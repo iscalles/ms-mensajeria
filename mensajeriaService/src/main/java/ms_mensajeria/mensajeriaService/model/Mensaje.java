@@ -1,5 +1,6 @@
 package ms_mensajeria.mensajeriaService.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,7 @@ public class Mensaje {
     @Column(name = "CUERPO_MENSAJE", nullable = false)
     private String cuerpoMensaje;
 
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm", timezone = "America/Santiago")
     @Column(name = "FECHA_ENVIO_MENSAJE", nullable = false)
     private LocalDateTime fechaEnvioMensaje;
 
