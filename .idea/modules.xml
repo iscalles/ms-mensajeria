@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mensajeriaService/mensajeriaService.iml" filepath="$PROJECT_DIR$/mensajeriaService/mensajeriaService.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/ms-mensajeria.iml" filepath="$PROJECT_DIR$/.idea/ms-mensajeria.iml" />
     </modules>
   </component>
